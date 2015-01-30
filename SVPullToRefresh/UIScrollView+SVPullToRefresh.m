@@ -405,11 +405,11 @@ static char UIScrollViewPullToRefreshView;
         if(!self.scrollView.isDragging && self.state == SVPullToRefreshStateTriggered) {
             self.state = SVPullToRefreshStateLoading;
         } else if(contentOffset.y < scrollOffsetThreshold && self.scrollView.isDragging && self.state == SVPullToRefreshStateStopped && self.position == SVPullToRefreshPositionTop) {
+            self.originalTopInset = self.scrollView.contentInset.top;
             self.state = SVPullToRefreshStateTriggered;
         } else if(contentOffset.y >= scrollOffsetThreshold && self.state != SVPullToRefreshStateStopped && self.position == SVPullToRefreshPositionTop) {
             self.state = SVPullToRefreshStateStopped;
         } else if(contentOffset.y > scrollOffsetThreshold && self.scrollView.isDragging && self.state == SVPullToRefreshStateStopped && self.position == SVPullToRefreshPositionBottom) {
-            self.originalTopInset = self.scrollView.contentInset.top;
             self.state = SVPullToRefreshStateTriggered;
         } else if(contentOffset.y <= scrollOffsetThreshold && self.state != SVPullToRefreshStateStopped && self.position == SVPullToRefreshPositionBottom) {
             self.state = SVPullToRefreshStateStopped;
